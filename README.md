@@ -32,10 +32,10 @@ has_many :orders
 |category           | string  | null: false |
 |product_name       | string  | null: false |
 |price              | string  | null: false |
-|product_status     | string  | null: false |
-|shipping_fee_burden| string  | null: false |
-|shipping_source_area|string  | null: false |
-|shipping_days       |integer | null: false |
+|product_status     | integer | null: false |
+|shipping_fee_burden| integer | null: false |
+|shipping_source_area| integer | null: false |
+|shipping_days       | integer | null: false |
 
 
 ### Association
