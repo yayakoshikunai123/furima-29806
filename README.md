@@ -12,25 +12,46 @@ ordersテーブルにはuser_id,item_idを登録する
 
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+↑ER図の記述
 
-* Ruby version
+DB設計
 
-* System dependencies
+## usersテーブル
 
-* Configuration
+| Column   | Type   | Options |
+| -----    | ----   | ------- |
+| name     | string | null: false |
+| email    | string | null: false |
+| password | string | null: false | 
 
-* Database creation
+### Association
 
-* Database initialization
+has_many :items
+has_one :order
 
-* How to run the test suite
+## itemsテーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+|Column |Type     |Options|
+|-------|---------|-------|
+|user_id| integer | null: false, foreign_key: true |
+|text   | string  | null: false |
+|image  | string  | null: false |
 
-* Deployment instructions
+### Association
 
-* ...
+belongs_to :user
+has_one :order
+
+## ordersテーブル
+
+|Column |Type   |Options|
+|-------|-------|-------|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+belongs_to :user
+belongs_to :item
+
+
