@@ -21,13 +21,14 @@ DB設計
 ### Association
 
 has_many :items
-has_one :order
+has_many :orders
 
 ## itemsテーブル
 
 |Column             |Type     |Options|
 |-------------------|---------|-------|
 |user_id            | integer | null: false, foreign_key: true |
+|explanation        | text    | null: false |
 |category           | string  | null: false |
 |product_name       | string  | null: false |
 |price              | string  | null: false |
@@ -58,14 +59,14 @@ has_one :address
 ## addresses
 |Column        | Type        |Options|
 |--------------|-------------|-------|
-|zip_code      | integer     |null:false|
+|zip_code      | string      |null:false|
 |prefecture    | string      |null:false|
-|city          |  string     |null:false|
+|city          | string      |null:false|
 |street_address| string      |null:false|
 |building_name | string      |null:false|
-|phone_number  | integer     |null:false|
+|phone_number  | string      |null:false|
 |purchase_information|string |null:false|
 |order_id      |integer      |null:false, foreign_key: true|
 
 ### Association
-belong_to :
+belong_to :order
