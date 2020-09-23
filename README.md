@@ -29,13 +29,13 @@ has_many :orders
 |-------------------|---------|-------|
 |user_id            | integer | null: false, foreign_key: true |
 |explanation        | text    | null: false |
-|category           | string  | null: false |
+|category_id        | integer | null: false |
 |product_name       | string  | null: false |
-|price              | string  | null: false |
-|product_status     | integer | null: false |
-|shipping_fee_burden| integer | null: false |
-|shipping_source_area| integer | null: false |
-|shipping_days       | integer | null: false |
+|price              | integer | null: false |
+|product_status_id  | integer | null: false |
+|shipping_fee_burden_id| integer | null: false |
+|shipping_source_area_id| integer | null: false |
+|shipping_days_id      | integer | null: false |
 
 
 ### Association
@@ -60,12 +60,11 @@ has_one :address
 |Column        | Type        |Options|
 |--------------|-------------|-------|
 |zip_code      | string      |null:false|
-|prefecture    | string      |null:false|
+|prefecture_id | integer     |null:false|
 |city          | string      |null:false|
 |street_address| string      |null:false|
-|building_name | string      |null:false|
+|building_name | string      |          |
 |phone_number  | string      |null:false|
-|purchase_information|string |null:false|
 |order_id      |integer      |null:false, foreign_key: true|
 
 ### Association
