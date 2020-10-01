@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  def new
-    @items = Item.all
+  def index
   end
 end
