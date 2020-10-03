@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :password, format: { with: /\A(?=\d{0,99}+[a-z])(?=[a-z]{0,99}+\d)[a-z\d]{6,100}+\z/i, message: 'Include both letters and numbers'} 
 
+  has_many :items
+
   with_options presence: true do  
     validates :nickname
     validates :birthday

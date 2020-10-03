@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 2020_10_01_114812) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.text "image", null: false
     t.text "expanation", null: false
     t.integer "category_id", null: false
     t.string "product_name", null: false
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_114812) do
     t.integer "product_status_id", null: false
     t.integer "shipping_fee_burden_id", null: false
     t.integer "shipping_source_area_id", null: false
-    t.integer "shipping_days_id", null: false
+    t.integer "shipping_day_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
