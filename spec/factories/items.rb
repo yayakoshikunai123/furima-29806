@@ -9,5 +9,6 @@ FactoryBot.define do
     shipping_source_area_id         { 2 }
     shipping_day_id                 { 2 }
     image                           { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.jpg')) }
+    association :user
   end
 end
