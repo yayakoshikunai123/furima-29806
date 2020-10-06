@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.order('created_at DESC')
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -15,7 +15,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.valid? 
+      @item.save
       redirect_to root_path
     else
       render :new
@@ -35,4 +36,9 @@ class ItemsController < ApplicationController
        :shipping_day_id, :shipping_fee_burden_id, :shipping_source_area_id,
       ).merge(user_id: current_user.id)
   end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
+
 end
