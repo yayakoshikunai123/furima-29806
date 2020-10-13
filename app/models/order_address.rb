@@ -9,13 +9,14 @@ class OrderAddress
     validates :prefecture_id, numericality: { other_than: 1, message: 'Select' }
     validates :street_address
     validates :phone_number, format: { with: /\A\d{11}\z/, message: '半角数字で入力してください' }
+    validates :token
   end
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
-    Address.create(
+    address = Address.create(
       zip_code: zip_code, prefecture_id: prefecture_id, city:city, street_address: street_address,
-      building_name: building_name, phone_number: phone_number , order_id: order.id, item_id: item_id, user_id: user_id, 
+      building_name: building_name, phone_number: phone_number , order_id: order.id
      )
   end
 end
