@@ -18,6 +18,8 @@ class Item < ApplicationRecord
 
   belongs_to :user
 
+  has_one :order
+
   with_options numericality:   { other_than: 1 } do
     validates :category_id 
     validates :product_status_id
