@@ -83,6 +83,12 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number 半角数字で入力してください")
       end    
+
+      it "電話番号は『ー（ハイフン）』が含まれていると登録できない" do
+        @order_address.phone_number = "000-0000-0000"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Phone number 半角数字で入力してください")
+      end
     end
   end
 end
