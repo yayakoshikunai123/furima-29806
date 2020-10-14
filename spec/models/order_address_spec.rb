@@ -36,8 +36,20 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Zip code 正しく入力してください")
       end
 
+      it "郵便番号に『ー（ハイフン）』が含まれていないと登録できない" do
+        @order_address.zip_code = "1234567"
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Zip code 正しく入力してください")
+      end
+
       it "都道府県が『ーー』だと登録できない" do
         @order_address.prefecture_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Prefecture Select")
+      end
+
+      it "都道府県が『１』を選択している状態だと登録できない" do
+        @order_address.prefecture_id = 1
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefecture Select")
       end
@@ -70,7 +82,7 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.phone_number = "000000000000"
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Phone number 半角数字で入力してください")
-      end
+      end    
     end
   end
 end
