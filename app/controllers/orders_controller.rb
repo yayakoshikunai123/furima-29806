@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! 
   before_action :set_order, only: [:index, :create]
+  before_action :order_filter, only:[:index]
 
   def index
-    redirect_to new_user_session_path if user_signed_in? && current_user.id == @item.user_id 
     @order = OrderAddress.new
   end
 
@@ -37,6 +37,14 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def order_filter
+    if @item.order.present? 
+       redirect_to root_path 
+    elsif user_signed_in? && current_user.id == @item.user_id
+       redirect_to root_path
+    end
   end
 
 
