@@ -71,3 +71,5 @@ gem 'active_hash'
 gem 'devise'
 
 gem 'payjp'
+
+gem "aws-sdk-s3", require: false
